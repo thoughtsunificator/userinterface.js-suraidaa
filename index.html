@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./resource/suraidaa.css">
+	<link rel="stylesheet" href="./lib/css-generics/index.css">
+	<script>
+		Suraidaa = {}
+	</script>
+	<script src="./src/object/slider.js"></script>
+	<script src="./src/object/image.js"></script>
+	<script src="./lib/userinterface.js/src/userinterface.js"></script>
+	<script src="./src/userinterface/slider.js"></script>
+	<script src="./src/userinterface/slider.binding.js"></script>
+	<script src="./src/userinterface/image.js"></script>
+	<script src="./src/userinterface/image.binding.js"></script>
+	<script src="./src/userinterface/bullet.js"></script>
+	<script src="./src/userinterface/bullet.binding.js"></script>
+	<script>
+		(function() {
+				const IMAGES_PATH = "./resource/image/"
+				const IMAGES = [ /* Slider images go here */
+					{	url: "slider_1.jpg", caption: "No Game No Life"	, link: "#"},
+					{	url: "slider_2.jpg", caption: "Dantalian no Shokan"	, link: "#"},
+					{ url: "slider_3.jpg", caption: "Bokurano" , link: "#"},
+					{ url: "slider_4.jpg", caption: "Infinite Stratos" , link: "#"}
+				].map(item => {
+					return new Suraidaa.Image(
+						{
+							low: { media: "(max-width: 21.000em)", src: IMAGES_PATH + item.url 	},
+							medium: {media: "(max-width: 44.000em)",	src: IMAGES_PATH + item.url	},
+							default: {	src: IMAGES_PATH + item.url	},
+						}, item.caption, item.link)
+				})
+
+				window.addEventListener("load", () => {
+					UserInterface.runModel("suraidaa.slider", { bindingArgs: [ IMAGES ], parentNode: document.body })
+				})
+
+		})()
+	</script>
+	<style type="text/css">
+		body {
+			display : grid;
+			justify-content: center;
+			place-items: center;
+			height: 100vh;
+			color: white;
+			background-color: #393939;
+			padding: 20px;
+		}
+		#slider {
+			max-width: 750px;
+		}
+	</style>
+</head>
+<body>
+</body>
+</html>
